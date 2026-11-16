@@ -2,47 +2,30 @@ package main
 
 import "fmt"
 
-type Person struct {
-	Name   string
-	Age    int
-	Job    string
-	Salary float64
+func changeValue(p *int) {
+	*p = 20
 }
 
-func (p *Person) ReadData() {
-	fmt.Print("Enter Name: ")
-	fmt.Scanln(&p.Name)
-
-	fmt.Print("Enter Age: ")
-	fmt.Scanln(&p.Age)
-
-	fmt.Print("Enter Job: ")
-	fmt.Scanln(&p.Job)
-
-	fmt.Print("Enter Salary: ")
-	fmt.Scanln(&p.Salary)
-}
-
-func (p Person) DisplayData() {
-	fmt.Println("Name   :", p.Name)
-	fmt.Println("Age    :", p.Age)
-	fmt.Println("Job    :", p.Job)
-	fmt.Printf("Salary : %.2f\n", p.Salary)
+type Student struct {
+	age int
 }
 
 func main() {
-	var person1 Person
-	var person2 Person
+	a := 10
+	p := &a
 
-	fmt.Println("Enter details for Person 1:")
-	person1.ReadData()
+	fmt.Println("Address of a:", &a)
+	fmt.Println("Value of a:", *p)
 
-	fmt.Println("\nEnter details for Person 2:")
-	person2.ReadData()
+	fmt.Println("Before:", a)
+	changeValue(&a)
+	fmt.Println("After:", a)
 
-	fmt.Println()
-	person1.DisplayData()
+	s := new(Student)
+	s.age = 21
 
-	fmt.Println()
-	person2.DisplayData()
+	fmt.Println("Student age:", s.age)
+
+	s.age = 22
+	fmt.Println("Updated student age:", s.age)
 }

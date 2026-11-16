@@ -1,15 +1,18 @@
-package lab01
+package main
 
 import "fmt"
 
 func main() {
-	var age int
-	fmt.Print("Enter your age: ")
-	fmt.Scan(&age)
+	a := 20
+	b := 6
+	x := 10.5
+	y := 2.5
 
-	if age < 18 {
-		fmt.Println("You are a minor")
-	} else {
-		fmt.Println("You are an adult")
-	}
+	fmt.Println(a + b)
+	fmt.Println(a - b)
+	fmt.Println(a * b)
+
+	fmt.Println(x + y)
+	fmt.Println(x - y)
+	fmt.Println(x * y)
 }
