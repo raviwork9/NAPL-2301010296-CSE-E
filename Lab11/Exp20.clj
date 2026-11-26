@@ -1,0 +1,43 @@
+(println "===== 1. Java static methods =====")
+(println "Math/abs of -25      :" (Math/abs -25))
+(println "Math/max of 10 and 40:" (Math/max 10 40))
+(println "Math/sqrt of 49      :" (Math/sqrt 49))
+(println "Current time (ms)    :" (System/currentTimeMillis))
+
+(println "\n===== 2. Creating Java objects =====")
+(def my-list (new java.util.ArrayList))
+(def my-map (java.util.HashMap.))
+(println "ArrayList created:" my-list)
+(println "HashMap created  :" my-map)
+
+(println "\n===== 3. Calling instance methods =====")
+(.add my-list "Apple")
+(.add my-list "Banana")
+(.add my-list "Cherry")
+(println "List after add  :" my-list)
+(println "List size       :" (.size my-list))
+(println "Item at index 1 :" (.get my-list 1))
+(println "Contains Mango? :" (.contains my-list "Mango"))
+
+(.put my-map "one" 1)
+(.put my-map "two" 2)
+(println "Map after put   :" my-map)
+(println "Value of key two:" (.get my-map "two"))
+(println "String upper    :" (.toUpperCase "clojure"))
+
+(println "\n===== 4. Clojure <-> Java collections =====")
+(def clj-vector [1 2 3 4 5])
+(def java-list (java.util.ArrayList. clj-vector))
+(println "Clojure vector      :" clj-vector (class clj-vector))
+(println "Converted to Java   :" java-list (class java-list))
+
+(def back-to-clj (vec java-list))
+(println "Back to Clojure     :" back-to-clj (class back-to-clj))
+
+(def clj-map {:a 1 :b 2})
+(def java-map (java.util.HashMap. clj-map))
+(println "Clojure map         :" clj-map (class clj-map))
+(println "Converted to Java   :" java-map (class java-map))
+
+(def back-map (into {} java-map))
+(println "Back to Clojure map :" back-map (class back-map))
